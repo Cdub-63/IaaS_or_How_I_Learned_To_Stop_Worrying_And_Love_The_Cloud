@@ -1,4 +1,4 @@
-THe puppose of this lab is for us to deploy a WebJob that resizes images. These images have been uploaded to blob storage, but we need smaller versions. This is a process we could use for something like a blog site, where smaller images are required for thumbnails and galleries.
+The puppose of this lab is for us to deploy a WebJob that resizes images. These images have been uploaded to blob storage, but we need smaller versions. This is a process we could use for something like a blog site, where smaller images are required for thumbnails and galleries.
 
 In the Azure portal, create an RDP session to a VM of your choosing
 
