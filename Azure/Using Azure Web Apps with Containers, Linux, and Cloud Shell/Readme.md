@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/44756128/113201762-83f63100-922f-11eb-93a1-7ca1e18a620a.png)
+
+
 The purpose of this lab was to gain experience using the Azure Cloud Shell to create App Service plans using Linux, and web apps that use Docker containers. In order to do that I will do the following implementations:
  - Create a Linux App Service plan, and a web app under that plan which uses Docker images on DockerHub and GitHub. 
 
