@@ -1,0 +1,8 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+      "APPINSIGHTS_INSTRUMENTATIONKEY": "<INSTRUMENTATION_KEY>",
+      "StorageConnectionAppSetting": "<KEY1_CONNECTION_STRING>",
+      "FUNCTIONS_WORKER_RUNTIME": "dotnet" 
+    }
+  }
