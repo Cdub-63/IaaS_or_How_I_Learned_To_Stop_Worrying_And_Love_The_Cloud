@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/44756128/113201474-282ba800-922f-11eb-8f24-f1af1e455a9c.png)
+
 The puppose of this lab is for us to deploy a WebJob that resizes images. These images have been uploaded to blob storage, but we need smaller versions. This is a process we could use for something like a blog site, where smaller images are required for thumbnails and galleries.
 
 In the Azure portal, create an RDP session to a VM of your choosing
