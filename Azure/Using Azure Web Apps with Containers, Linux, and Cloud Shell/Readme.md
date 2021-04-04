@@ -1,19 +1,21 @@
 ![image](https://user-images.githubusercontent.com/44756128/113201762-83f63100-922f-11eb-93a1-7ca1e18a620a.png)
 
-
 The purpose of this lab was to gain experience using the Azure Cloud Shell to create App Service plans using Linux, and web apps that use Docker containers. In order to do that I will do the following implementations:
+
  - Create a Linux App Service plan, and a web app under that plan which uses Docker images on DockerHub and GitHub. 
 
 Log into the Azure portal and open up "Cloud Shell" > Powershell.
 
-!!Use the following to create the linux Service plan:
+# Use the following to create the linux Service plan:
 
 $resourceGroup = az group list --query '[0].name' --output json
+
 $appServicePlan = 'Linux-App-ServicePlan'
 
 az appservice plan create -g $resourceGroup -n $appServicePlan --is-linux --number-of-workers 1 --sku B1
 
 OUTPUT:
+
 VERBOSE: Authenticating to Azure ...
 VERBOSE: Building your Azure drive ...
 PS /home/cloud> $resourceGroup = az group list --query '[0].name' --output json
@@ -25,7 +27,7 @@ PS /home/cloud> az appservice plan create -g $resourceGroup -n $appServicePlan -
   "geoRegion": "West US",
   "hostingEnvironmentProfile": null,
   "hyperV": false,
-  "id": "[<REMOVED>]",
+  "id": "[<REMOVED>]"
   "isSpot": false,
   "isXenon": false,
   "kind": "linux",
@@ -59,12 +61,15 @@ PS /home/cloud> az appservice plan create -g $resourceGroup -n $appServicePlan -
 }
 
 Use the following to create file shares:
+
 $resourceGroup = az group list --query '[0].name' --output json
+
 $appServicePlan = 'Linux-App-ServicePlan'
 
 az appservice plan create -g $resourceGroup -n $appServicePlan --is-linux --number-of-workers 1 --sku B1
 
-OUTPUT
+OUTPUT:
+
 PS /home/cloud> $app = 'LinuxDockerApp' + (Get-Date).ticks
 PS /home/cloud>
 PS /home/cloud> az webapp create --resource-group $resourceGroup --plan $appServicePlan --name $app --deployment-container-image-name microsoft/dotnet-samples:aspnetapp
@@ -252,9 +257,11 @@ We can verify this by navigating to our Azure Portal tab. Click All Resources an
 ![image](https://user-images.githubusercontent.com/44756128/112860163-320baa80-9079-11eb-839e-5cfc9c45787e.png)
 
 Finally to update web app container image from DockerHub to GitHub. Paste the following:
+
 az webapp config container set --resource-group $resourceGroup --name $app --docker-registry-server-url 'https://github.com/dotnet/dotnet-docker/tree/master/samples/aspnetapp'
 
-OUTPUT
+OUTPUT:
+
 PS /home/cloud> az webapp config container set --resource-group $resourceGroup --name $app --docker-registry-server-url 'https://github.com/dotnet/dotnet-docker/tree/master/samples/aspnetapp'
 [
   {
@@ -282,5 +289,3 @@ We can verify that our site is running by clicking Overview in the App Service m
 ![image](https://user-images.githubusercontent.com/44756128/112860787-be1dd200-9079-11eb-8697-0116967fd455.png)
 
 ![image](https://user-images.githubusercontent.com/44756128/112860992-fe7d5000-9079-11eb-8abf-5b4b2bc3d87b.png)
-
-
