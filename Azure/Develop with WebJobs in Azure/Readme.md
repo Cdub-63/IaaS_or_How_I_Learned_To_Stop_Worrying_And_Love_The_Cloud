@@ -55,7 +55,7 @@ Remove-Item -Path $zipfile3
 ![image](https://user-images.githubusercontent.com/44756128/113052125-62804100-916c-11eb-88c1-df54f86a9de6.png)
 
 
-!!!The trailing hashtag is used so we paste and run the script in full.!!!
+The trailing hashtag is used so we paste and run the script in full.
 
 # Deploy the PhotoStor Web App using Visual Studio
 
@@ -137,7 +137,7 @@ In Solution Explorer, right-click the Thumbnailer project and click Build. After
 
 ![image](https://user-images.githubusercontent.com/44756128/113056946-10dab500-9172-11eb-8e51-9c192205fa88.png)
 
-!!STOP HERE!!
+STOP HERE
 
 Remember the mention of pausing while a WebJob restarts? This is it. Hang on here for a bit, and let the web app publish completely. Now is a good time to grab a coffee, go get the mail, or catch up on your Twitter feed. In a minute or two, it's safe to proceed.
 
@@ -151,7 +151,7 @@ Upload a few more images to blob storage
 
 Upload a few more of the sample images we downloaded with that Powershell script earlier, by either clicking the upload box or dragging them from File Explorer (again, drag and drop does not work with Edge). The list of images should now include the images you just uploaded.
 
-Where are my thumbnails?
+# Where are my thumbnails?
 
 The images were uploaded successfully. However, the WebJob has not yet run against the images container. Why?
 
@@ -163,7 +163,7 @@ Now, if we head back to the end-user's view of our web app, we can hit our brows
 
 ![image](https://user-images.githubusercontent.com/44756128/113057901-3a481080-9173-11eb-9d01-93f63d8214aa.png)
 
-Review the WebJob logs in the WebJobs dashboard
+# Review the WebJob logs in the WebJobs dashboard
 
 The WebJob dashboard is a convenient place to review the logs of a particular WebJob, including a list of the recent invocations.
 
