@@ -1,6 +1,6 @@
 ![image](https://user-images.githubusercontent.com/44756128/113201474-282ba800-922f-11eb-8f24-f1af1e455a9c.png)
 
-The puppose of this lab is for us to deploy a WebJob that resizes images. These images have been uploaded to blob storage, but we need smaller versions. This is a process we could use for something like a blog site, where smaller images are required for thumbnails and galleries.
+The purpose of this lab is for us to deploy a WebJob that resizes images. These images have been uploaded to blob storage, but we need smaller versions. This is a process we could use for something like a blog site, where smaller images are required for thumbnails and galleries.
 
 In the Azure portal, create an RDP session to a VM of your choosing
 
@@ -134,103 +134,6 @@ In Solution Explorer, right-click the Thumbnailer project and click Build. After
 ![image](https://user-images.githubusercontent.com/44756128/113056658-afb2e180-9171-11eb-9af1-276e1d0f93b6.png)
 
 ![image](https://user-images.githubusercontent.com/44756128/113056743-d07b3700-9171-11eb-9eb8-a92740b247e5.png)
-
-Thumbnailer -> C:\Users\azureuser\Documents\VS\Thumbnailer\Thumbnailer\bin\Release\Thumbnailer.exe
-
-Copying all files to temporary location below for package/publish:
-
-obj\Release\Package\PackageTmp.
-
-Start Web Deploy Publish the Application/package to https://webapp-vdyit.scm.azurewebsites.net/msdeploy.axd?site=webapp-vdyit ...
-
-Adding sitemanifest (sitemanifest).
-
-Adding directory (webapp-vdyit\app_data).
-
-Adding directory (webapp-vdyit\app_data\jobs).
-
-Adding directory (webapp-vdyit\app_data\jobs\continuous).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\de).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\es).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\fr).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\it).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ja).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ko).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ru).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hans).
-Adding directory (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hant).
-Adding ACLs for path (webapp-vdyit)
-Adding ACLs for path (webapp-vdyit)
-Adding ACLs for path (webapp-vdyit/App_Data)
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\de\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\de\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\de\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\de\System.Spatial.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\es\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\es\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\es\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\es\System.Spatial.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\fr\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\fr\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\fr\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\fr\System.Spatial.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ImageProcessor.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ImageProcessor.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\it\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\it\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\it\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\it\System.Spatial.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ja\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ja\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ja\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ja\System.Spatial.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ko\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ko\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ko\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ko\System.Spatial.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Azure.WebJobs.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Azure.WebJobs.Host.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Azure.WebJobs.Host.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Azure.WebJobs.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Data.Edm.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Data.Edm.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Data.OData.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Data.OData.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Data.Services.Client.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.Data.Services.Client.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.WindowsAzure.Configuration.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.WindowsAzure.Configuration.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.WindowsAzure.Storage.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.WindowsAzure.Storage.pdb).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Microsoft.WindowsAzure.Storage.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Newtonsoft.Json.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Newtonsoft.Json.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ru\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ru\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ru\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\ru\System.Spatial.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\System.Spatial.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\System.Spatial.xml).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Thumbnailer.exe).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Thumbnailer.exe.config).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\Thumbnailer.pdb).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\WebJob1.exe).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\WebJob1.exe.config).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\WebJob1.pdb).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hans\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hans\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hans\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hans\System.Spatial.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hant\Microsoft.Data.Edm.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hant\Microsoft.Data.OData.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hant\Microsoft.Data.Services.Client.resources.dll).
-Adding file (webapp-vdyit\app_data\jobs\continuous\Thumbnailer\zh-Hant\System.Spatial.resources.dll).
-Adding ACLs for path (webapp-vdyit)
-Adding ACLs for path (webapp-vdyit)
-Adding ACLs for path (webapp-vdyit/App_Data)
-Publish Succeeded.
-Web App was published successfully http://webapp-vdyit.azurewebsites.net/
 
 ![image](https://user-images.githubusercontent.com/44756128/113056946-10dab500-9172-11eb-8e51-9c192205fa88.png)
 
