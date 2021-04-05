@@ -76,22 +76,14 @@ Click Add > Virtual machine.
 ![image](https://user-images.githubusercontent.com/44756128/113426373-fd5d6300-9398-11eb-89e2-27980861f0d0.png)
 
 On the Basics page:
-
-Subscription: Leave as-is
-
-Resource group: Select the one in the dropdown
-
-Virtual machine name: vm-XXXXX, where XXXXX represents the five-character code you noted earlier
-
-Region: Same as your resources
-
-Availability options: No infrastructure redundancy required
-
-Image: CentOS-based 8.2 (or the most recent version of it)
-
-Size: Standard_B1s
-
-Authentication type: Password
+ - Subscription: Leave as-is
+ - Resource group: Select the one in the dropdown
+ - Virtual machine name: vm-XXXXX, where XXXXX represents the five-character code you noted earlier
+ - Region: Same as your resources
+ - Availability options: No infrastructure redundancy required
+ - Image: CentOS-based 8.2 (or the most recent version of it)
+ - Size: Standard_B1s
+ - Authentication type: Password
 
 Enter username and Password
 
@@ -110,14 +102,10 @@ OS disk type: Standard HDD
 Leave everything else as-is.
 
 Click Next: Networking, and set the following values:
-
-Virtual network: Select the VNet in your resource group
-
-Subnet: default (10.0.0.0/24)
-
-Public IP: Select the resource group public IP address you created
-
-Leave all other settings as their defaults.
+ - Virtual network: Select the VNet in your resource group
+ - Subnet: default (10.0.0.0/24)
+ - Public IP: Select the resource group public IP address you created
+ - Leave all other settings as their defaults.
 
 ![image](https://user-images.githubusercontent.com/44756128/113427038-f5ea8980-9399-11eb-8145-c53d5a18e483.png)
 
@@ -207,28 +195,24 @@ Click Show advanced settings.
 ![image](https://user-images.githubusercontent.com/44756128/113427920-84abd600-939b-11eb-940c-25d03a402dbd.png)
 
 Set the following values:
-
-Subscription: Select the subscription you have
-
-Cloud Shell region: Select the region your resources are located in
-
-Resource group: Select your resource group
-
-Storage account: Use existing
-
-File share: Use existing, and enter the name of the file share from earlier
-
-Click Attach storage.
+ - Subscription: Select the subscription you have
+ - Cloud Shell region: Select the region your resources are located in
+ - Resource group: Select your resource group
+ - Storage account: Use existing
+ - File share: Use existing, and enter the name of the file share from earlier
+ - Click Attach storage.
 
 ![image](https://user-images.githubusercontent.com/44756128/113428048-b755ce80-939b-11eb-900d-eb5ade141ec7.png)
 
 Change to the clouddrive directory:
-
+```sh
 cd clouddrive
+```
 
 Paste in the following Azure CLI command, but do not run it:
-
+```sh
 az deployment group create --resource-group "<RESOURCE_GROUP>" --template-file template.json --parameters parameters.json
+```
 
 With the code pasted, delete the "<RESOURCE_GROUP>" and leave the cursor just behind –-resource-group.
 
