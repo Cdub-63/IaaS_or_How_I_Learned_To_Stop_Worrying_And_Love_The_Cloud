@@ -20,21 +20,18 @@ Opne Cloud Shell. Cloud Shell asks us if we would like to use Bash or PowerShell
 ![image](https://user-images.githubusercontent.com/44756128/113319697-5664c280-92d7-11eb-8bf7-97d4a3638417.png)
 
  # Create a Service Bus namespace and queue
+ ```sh
  $resourceGroup = az group list --query '[0].name' --output json
- 
  $namespaceName  = "LALab" + (Get-Date).ticks
-
  az servicebus namespace create --resource-group $resourceGroup --name $namespaceName --location southcentralus
- 
  az servicebus queue create --resource-group $resourceGroup --namespace-name $namespaceName --name myQueue
- 
  #
- 
-  ![image](https://user-images.githubusercontent.com/44756128/113320608-4c8f8f00-92d8-11eb-8fda-416c47fd00cf.png)
+ ```
+![image](https://user-images.githubusercontent.com/44756128/113320608-4c8f8f00-92d8-11eb-8fda-416c47fd00cf.png)
   
-  ![image](https://user-images.githubusercontent.com/44756128/113320735-78127980-92d8-11eb-945b-3fe7d2120d61.png)
+![image](https://user-images.githubusercontent.com/44756128/113320735-78127980-92d8-11eb-945b-3fe7d2120d61.png)
   
-  We can verify this process completed successfully in the Azure Portal.
+We can verify this process completed successfully in the Azure Portal.
 
 Start by clicking All resources in the navigation bar on the left of the screen.
 
@@ -64,24 +61,17 @@ Next, right-click the file and choose Edit.
 ![image](https://user-images.githubusercontent.com/44756128/113321617-641b4780-92d9-11eb-8846-4a50c547096d.png)
 
 The VM will finish setting up and logging in. Once it is ready, we need to download the C# project used to send and receive messages to our queue. Thankfully, this can be completed with a few handy PowerShell commands:
-
+```sh
 Add-Type -Path "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.IO.Compression.FileSystem.dll"
-
 $url = "https://github.com/linuxacademy/content-azure-labs/blob/master/zips/azure-service-bus-queues.zip?raw=true"
-
 $zipfile = "C:\Users\azureuser\Desktop\azure-service-bus-queues.zip"
-
 $folder = "C:\Users\azureuser\Desktop"
-
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
 Invoke-WebRequest -UseBasicParsing -OutFile $zipfile $url
-
 [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $folder)
-
 Remove-Item -Path $zipfile
-
 #
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113322080-ddb33580-92d9-11eb-8483-ed4e1df1e07d.png)
 
