@@ -18,36 +18,25 @@ Search for Function App.
 ![image](https://user-images.githubusercontent.com/44756128/113193774-f82bd700-9225-11eb-97f3-7c3f83915cc7.png)
 
 On the Create Function App page, set the following values:
-
-Subscription: Existing subscription
-
-Resource Group: Existing resource group
-
-Function App name: funclab-xxxxx, where xxxxx is the lab suffix for all lab resources (see above)
-
-Publish: Code
-
-Runtime stack: .NET
-
-Version: 3.1
-
-Region: Region where resource group resides (get from opening the resource group in the path in a new tab above)
+  - Subscription: Existing subscription
+  - Resource Group: Existing resource group
+  - Function App name: funclab-xxxxx, where xxxxx is the lab suffix for all lab resources (see above)
+  - Publish: Code
+  - Runtime stack: .NET
+  - Version: 3.1
+  - Region: Region where resource group resides (get from opening the resource group in the path in a new tab above)
 
 ![image](https://user-images.githubusercontent.com/44756128/113194066-535dc980-9226-11eb-9b5d-e4c6b2dd4827.png)
 
 Click Next: Hosting >, and set the following values:
-
-Storage Account: Existing storage account
-
-Operating System: Windows
-
-Plan type: Consumption (Serverless)
+  - Storage Account: Existing storage account
+  - Operating System: Windows
+  - Plan type: Consumption (Serverless)
 
 ![image](https://user-images.githubusercontent.com/44756128/113194266-8f912a00-9226-11eb-858c-994517a68704.png)
 
 Click Next: Monitoring >. Set the following value:
-
-Enable Application Insights: No (This is due to a current bug in the Azure Portal. We will enable this in a later step.)
+  - Enable Application Insights: No (This is due to a current bug in the Azure Portal. We will enable this in a later step.)
 
 ![image](https://user-images.githubusercontent.com/44756128/113194368-ae8fbc00-9226-11eb-8a4a-784c052f28c4.png)
 
@@ -76,20 +65,24 @@ Start an RDP session with your VM that has Git Bash installed.
 From the virtual machine, open Git Bash.
 
 Make a new directory named "git":
-
+```sh
 mkdir git
+```
 
 Change to the new directory:
-
+```sh
 cd git
+```
 
 Clone the repository for the Azure labs:
-
+```sh
 git clone https://github.com/linuxacademy/content-azure-labs.git
+```
 
 Extract the solution file for this lab into the Downloads directory:
-
+```sh
 unzip content-azure-labs/zips/azure-hol-functions.zip -d ~/Downloads
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113195697-2dd1bf80-9228-11eb-912c-be8a58026002.png)
 
@@ -154,16 +147,13 @@ Open the Visual Studio Solution Explorer window and open the local.settings.json
 ![image](https://user-images.githubusercontent.com/44756128/113198171-37a8f200-922b-11eb-9fe2-f55636c51945.png)
 
 Paste the instrumentation key and connection string from the text editor into the local.settings.json file, replacing "" and "" with the copied value:
-
+```json
 "Values": {
-
-  "APPINSIGHTS_INSTRUMENTATIONKEY": "<INSTRUMENTATION_KEY>"
-  
-  "StorageConnectionAppSetting": "<KEY1_CONNECTION_STRING>"
-  
-  "FUNCTIONS_WORKER_RUNTIME":  "dotnet"
-  
+  "APPINSIGHTS_INSTRUMENTATIONKEY": "<INSTRUMENTATION_KEY>" 
+  "StorageConnectionAppSetting": "<KEY1_CONNECTION_STRING>" 
+  "FUNCTIONS_WORKER_RUNTIME":  "dotnet" 
 }
+```
 
 Save and close the file.
 
@@ -172,53 +162,32 @@ From the Solution Explorer window, open the Function1.cs file.
 ![image](https://user-images.githubusercontent.com/44756128/113198479-97070200-922b-11eb-8205-ad9c8cef883d.png)
 
 Add the following code to the file, replacing "<TABLE_NAME>" with the name of the table you created in the previous objective:
-
+```json
 public static class Function1
-
 {
-
-    [FunctionName("Function1")]
-    
-    [return: Table("<TABLE_NAME>", Connection = "StorageConnectionAppSetting")]
-    
-    public static SampleData Run(
-    
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
-        
-        HttpRequest req,
-        
-        ILogger log)
-        
+    [FunctionName("Function1")]   
+    [return: Table("<TABLE_NAME>", Connection = "StorageConnectionAppSetting")] 
+    public static SampleData Run(  
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]        
+        HttpRequest req,       
+        ILogger log)       
     {
-    
         log.LogInformation("C# HTTP trigger function processed a request.");
-
         string name = req.Query["name"];
-
-        return new SampleData()
-        
-        {
-        
-            PartitionKey = "Http",
-            
-            RowKey = Guid.NewGuid().ToString(),
-            
-            Text = name
-            
-        };
-        
-    }
-    
+        return new SampleData()    
+        {    
+            PartitionKey = "Http",        
+            RowKey = Guid.NewGuid().ToString(),          
+            Text = name          
+        };        
+    }    
 }
-
-    public class SampleData : TableEntity
-    
-    {
-    
-        public string Text { get; set; }
-        
+    public class SampleData : TableEntity 
+    {   
+        public string Text { get; set; }        
     }
-    
+```
+
 Click Save.
 
 Click the play button to start the function.
