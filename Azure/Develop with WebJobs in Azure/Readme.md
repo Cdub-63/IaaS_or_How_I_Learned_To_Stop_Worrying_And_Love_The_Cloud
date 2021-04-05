@@ -7,53 +7,32 @@ In the Azure portal, create an RDP session to a VM of your choosing
 ![image](https://user-images.githubusercontent.com/44756128/113051438-9313ab00-916b-11eb-98b2-2eda4ce3ddde.png)
 
 Once you are in the RDP session, run the following commands to download the PhotoStor Web App, the Thumbnailer WebJob, and some sample images that we will use in the lab:
-
+```sh
 Add-Type -AssemblyName System.IO.Compression.FileSystem
-
 $url = "https://github.com/linuxacademy/content-az-300-lab-repos/blob/master/create-an-azure-web-app/LA_PhotoStor.zip?raw=true"
-
 $url2 = "https://github.com/linuxacademy/content-az-300-lab-repos/blob/master/create-an-azure-web-app/images.zip?raw=true"
-
 $url3 = "https://github.com/linuxacademy/content-az-300-lab-repos/blob/master/develop-with-webjobs-in-azure/Thumbnailer.zip?raw=true"
-
 $zipfile = "C:\Users\azureuser\Desktop\LA_PhotoStor.zip"
-
 $zipfile2 = "C:\Users\azureuser\Desktop\images.zip"
-
 $zipfile3 = "C:\Users\azureuser\Desktop\Thumbnailer.zip"
-
 $folder = "C:\Users\azureuser\Documents\VS"
-
 $folder2 = "C:\Users\azureuser\Pictures"
-
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
 Invoke-WebRequest -UseBasicParsing -OutFile $zipfile $url
-
 [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $folder)
-
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
 Invoke-WebRequest -UseBasicParsing -OutFile $zipfile2 $url2
-
 [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile2, $folder2)
-
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
 Invoke-WebRequest -UseBasicParsing -OutFile $zipfile3 $url3
-
 [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile3, $folder)
-
 Remove-Item -Path $zipfile
-
 Remove-Item -Path $zipfile2
-
 Remove-Item -Path $zipfile3
-
 #
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113052125-62804100-916c-11eb-88c1-df54f86a9de6.png)
-
 
 The trailing hashtag is used so we paste and run the script in full.
 
@@ -95,18 +74,17 @@ Clicking any of the hyperlinks will result in the image being displayed.
 To save time, the Web App was already pre-deployed with settings to interact with blob storage. However, additional settings are required for the WebJob to interact with blob storage. We will configure those now.
 
 We're creating three settings:
-
+```
 App Setting Name	                      Value
-
 AzureStorageConfig__ThumbnailContainer	thumbnails
-
 AzureWebJobsDashboard	                  DefaultEndpointsProtocol=https;AccountName=;AccountKey=
-
 AzureWebJobsStorage	                    DefaultEndpointsProtocol=https;AccountName=;AccountKey=
+```
 
 Note: Insert the storage account name and access key values into the AzureWebJobsDashboard and AzureWebJobStorage values, between the =** and the **;, like this:
-
+```sh
 DefaultEndpointsProtocol=https;AccountName=STORAGE_ACCOUNT_NAME;AccountKey=STORAGE_ACCOUNT_KEY
+```
 
 There's some preparation before this step. We need to get those values. Let's open up a text editor and paste that line into it. We can paste the other two values as we get them. It will save typing, and possibly avoiding a fat-fingering type of mistake.
 
