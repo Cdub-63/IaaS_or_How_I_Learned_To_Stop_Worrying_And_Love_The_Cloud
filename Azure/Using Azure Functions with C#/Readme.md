@@ -162,7 +162,7 @@ From the Solution Explorer window, open the Function1.cs file.
 ![image](https://user-images.githubusercontent.com/44756128/113198479-97070200-922b-11eb-8205-ad9c8cef883d.png)
 
 Add the following code to the file, replacing "<TABLE_NAME>" with the name of the table you created in the previous objective:
-```json
+```cs
 public static class Function1
 {
     [FunctionName("Function1")]   
