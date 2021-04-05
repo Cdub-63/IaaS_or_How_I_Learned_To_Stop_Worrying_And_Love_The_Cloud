@@ -7,15 +7,14 @@ The purpose of this lab was to gain experience using the Azure Cloud Shell to cr
 Log into the Azure portal and open up "Cloud Shell" > Powershell.
 
 # Use the following to create the linux Service plan:
-
+```sh
 $resourceGroup = az group list --query '[0].name' --output json
-
 $appServicePlan = 'Linux-App-ServicePlan'
-
 az appservice plan create -g $resourceGroup -n $appServicePlan --is-linux --number-of-workers 1 --sku B1
+```
 
 OUTPUT:
-
+```sh
 VERBOSE: Authenticating to Azure ...
 VERBOSE: Building your Azure drive ...
 PS /home/cloud> $resourceGroup = az group list --query '[0].name' --output json
@@ -59,17 +58,17 @@ PS /home/cloud> az appservice plan create -g $resourceGroup -n $appServicePlan -
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 }
+```
 
 Use the following to create file shares:
-
+```sh
 $resourceGroup = az group list --query '[0].name' --output json
-
 $appServicePlan = 'Linux-App-ServicePlan'
-
 az appservice plan create -g $resourceGroup -n $appServicePlan --is-linux --number-of-workers 1 --sku B1
+```
 
 OUTPUT:
-
+```sh
 PS /home/cloud> $app = 'LinuxDockerApp' + (Get-Date).ticks
 PS /home/cloud>
 PS /home/cloud> az webapp create --resource-group $resourceGroup --plan $appServicePlan --name $app --deployment-container-image-name microsoft/dotnet-samples:aspnetapp
@@ -251,17 +250,19 @@ PS /home/cloud> az webapp create --resource-group $resourceGroup --plan $appServ
   "type": "Microsoft.Web/sites",
   "usageState": "Normal"
 }
+```
 
 We can verify this by navigating to our Azure Portal tab. Click All Resources and then click on our Docker App Service in the list of resources. In the Settings section, click Container settings and note the Image source is set to Docker Hub.
 
 ![image](https://user-images.githubusercontent.com/44756128/112860163-320baa80-9079-11eb-839e-5cfc9c45787e.png)
 
 Finally to update web app container image from DockerHub to GitHub. Paste the following:
-
+```sh
 az webapp config container set --resource-group $resourceGroup --name $app --docker-registry-server-url 'https://github.com/dotnet/dotnet-docker/tree/master/samples/aspnetapp'
+```
 
 OUTPUT:
-
+```sh
 PS /home/cloud> az webapp config container set --resource-group $resourceGroup --name $app --docker-registry-server-url 'https://github.com/dotnet/dotnet-docker/tree/master/samples/aspnetapp'
 [
   {
@@ -279,6 +280,7 @@ PS /home/cloud> az webapp config container set --resource-group $resourceGroup -
     "value": "DOCKER|microsoft/dotnet-samples:aspnetapp"
   }
 ]
+```
 
 We can verify that this command ran successfully by navigating back to the Azure Portal. Refresh the Container settings page. Our Image source now shows as Private Registry and the Server URL is the same URL we provided in our command.
 
