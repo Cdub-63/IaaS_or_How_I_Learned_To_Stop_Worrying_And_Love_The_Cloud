@@ -152,32 +152,25 @@ Open the parameters.json file in a local text editor.
 ![image](https://user-images.githubusercontent.com/44756128/113427370-81fcb100-939a-11eb-8902-69ed1c7af1aa.png)
 
 At the bottom of the file, locate the following section:
-
+```json
 "adminPassword": {
-
     "value": null
-    
 }
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113427438-a062ac80-939a-11eb-9b96-4f8825786982.png)
 
 Edit it to match the following, replacing KeyVaultID with the resource ID we copied earlier and KeyVaultSecret with the Key Vault secret name we created earlier (VMPass):
-
+```json
 "adminPassword": {
-
-    "reference": {
-    
-        "keyVault": {
-        
-            "id": "KeyVaultID"
-            
-        },
-        
-        "secretName": "KeyVaultSecret"
-        
-    }
-    
+    "reference": {   
+        "keyVault": {      
+            "id": "KeyVaultID"           
+        },     
+        "secretName": "KeyVaultSecret"       
+    }   
 }
+```
 
 Note: When it's done, there should be four } brackets at the end of the file.
 
@@ -248,7 +241,7 @@ Press Enter to execute the command.
 ![image](https://user-images.githubusercontent.com/44756128/113429589-64314b00-939e-11eb-9bf6-8e82d3080132.png)
 
 OUTPUT:
-
+```sh
 cloud@Azure:~/clouddrive$ az deployment group create --resource-group 415-f980fe72-using-azure-key-vault-p53 --template-file template.json --parameters parameters.json
 {- Finished ..
   "id": "/subscriptions/0f39574d-d756-48cf-b622-0e27a6943bd2/resourceGroups/415-f980fe72-using-azure-key-vault-p53/providers/Microsoft.Resources/deployments/template",
@@ -404,6 +397,7 @@ cloud@Azure:~/clouddrive$ az deployment group create --resource-group 415-f980fe
   "tags": null,
   "type": "Microsoft.Resources/deployments"
 }
+```
 
 When the CLI output appears on the screen, check the Azure portal to confirm the deployment of the VM by going to Home > Virtual machines to ensure the virtual machine exists.
 
@@ -418,8 +412,9 @@ Under Run the example command below to connect to your VM, copy the azureuser em
 In Cloud Shell, log in to the VM via SSH (replacing <AZUREUSER_EMAIL> with the email address you just copied):
 
 ![image](https://user-images.githubusercontent.com/44756128/113430041-19fc9980-939f-11eb-9502-c8ae3910e7c2.png)
-
+```json
 ssh <AZUREUSER_EMAIL>
+```
 
 At the prompt asking if you want to continue connecting, enter y.
 
