@@ -43,14 +43,10 @@ Click Generate/Import.
 ![image](https://user-images.githubusercontent.com/44756128/113425895-3ea14300-9398-11eb-9ded-1b3f227c113e.png)
 
 Configure the secret with the following settings:
-
-Upload options: Manual
-
-Name: VMPass
-
-Value: Something memorable and unique (e.g., P@ssw0rd!1234). Make sure you note this password, as we'll use it later.
-
-Content type: password
+ - Upload options: Manual
+ - Name: VMPass
+ - Value: Something memorable and unique (e.g., P@ssw0rd!1234). Make sure you note this password, as we'll use it later.
+ - Content type: password
 
 ![image](https://user-images.githubusercontent.com/44756128/113426026-790ae000-9398-11eb-9c1a-710c5c4fc987.png)
 
@@ -84,18 +80,14 @@ On the Basics page:
  - Image: CentOS-based 8.2 (or the most recent version of it)
  - Size: Standard_B1s
  - Authentication type: Password
-
-Enter username and Password
-
-Confirm password: Repeat the password
-
-Inbound port rules: Leave as-is
+ - Enter username and Password
+ - Confirm password: Repeat the password
+ - Inbound port rules: Leave as-is
 
 ![image](https://user-images.githubusercontent.com/44756128/113426834-a2783b80-9399-11eb-8fbc-4e751569f4c3.png)
 
 Click Next: Disks, and set the following values:
-
-OS disk type: Standard HDD
+  - OS disk type: Standard HDD
 
 ![image](https://user-images.githubusercontent.com/44756128/113426904-b9b72900-9399-11eb-9b87-e57e916fab39.png)
 
@@ -110,8 +102,7 @@ Click Next: Networking, and set the following values:
 ![image](https://user-images.githubusercontent.com/44756128/113427038-f5ea8980-9399-11eb-8145-c53d5a18e483.png)
 
 Click Next: Management, and set the following values:
-
-Boot diagnostics: Disable
+  - Boot diagnostics: Disable
 
 Leave all other settings as their defaults.
 
