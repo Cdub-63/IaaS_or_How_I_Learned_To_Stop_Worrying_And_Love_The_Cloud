@@ -36,16 +36,44 @@ Log into the AWS Management Console.
 
   - At the bottom of the page, switch to the Template tab, and delete any pre-populated text.
   - Using the following CloudFormation template, copy and paste the contents and click Validate template.
+
+![image](https://user-images.githubusercontent.com/44756128/114305628-9cbbdd80-9a9e-11eb-915f-8809161a20dd.png)
+
   - Click Create stack.
+
+![image](https://user-images.githubusercontent.com/44756128/114305645-b65d2500-9a9e-11eb-95c8-95a4d77555b7.png)
+
   - Leave the settings as default and click Next.
-  - Give the stack a name and for the KeyName, select the key pair created earlier in the lab. Click Next.
+
+![image](https://user-images.githubusercontent.com/44756128/114305656-c412aa80-9a9e-11eb-87da-37be4d9c8901.png)
+
+  - Give the stack a name and for the KeyName, select the key pair created earlier. Click Next.
+
+![image](https://user-images.githubusercontent.com/44756128/114305693-eefcfe80-9a9e-11eb-830b-f9adb55b91d0.png)
+
   - Continue clicking next, leaving the rest of the settings as default, and click Create stack.
+
+![image](https://user-images.githubusercontent.com/44756128/114305711-03d99200-9a9f-11eb-8cb2-98313d459875.png)
+
+![image](https://user-images.githubusercontent.com/44756128/114305724-10f68100-9a9f-11eb-9066-e0de01048d6d.png)
+
   - In the top-left corner of the page, open the Services menu, and click VPC.
+
+![image](https://user-images.githubusercontent.com/44756128/114305776-32576d00-9a9f-11eb-8067-6f032bb3ffd9.png)
+
   - Review the resources that were created during the stack creation.
+
+![image](https://user-images.githubusercontent.com/44756128/114305815-5d41c100-9a9f-11eb-8e95-1a60acb17f5b.png)
 
 # Use the EC2 Public IP Address to Verify Connectivity to the Instance
 From the EC2 dashboard, select the EC2 instance that was created with the stack, and click Connect.
+
+![image](https://user-images.githubusercontent.com/44756128/114305881-9a0db800-9a9f-11eb-8d29-047630f91935.png)
+
 Copy the Example SSH command provided at the bottom of the Connect To Your Instance modal.
+
+![image](https://user-images.githubusercontent.com/44756128/114305897-a98d0100-9a9f-11eb-923a-19923e237480.png)
+
 Using a local terminal application, change the permissions for the downloaded key pair to read-only:
 ```sh
 cd Downloads
