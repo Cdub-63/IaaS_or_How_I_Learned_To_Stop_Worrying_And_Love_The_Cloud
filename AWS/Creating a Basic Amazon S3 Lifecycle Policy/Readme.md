@@ -5,7 +5,7 @@ AWS Glacier is a long-term archive storage service that provides lower-cost stor
 
 Log in to the AWS Management Console.
 
-Upload the pinehead and pineheadv2 files to the S3 bucket we create.
+Upload the ccp-master.zip files to the S3 bucket we create.
 
 # Create an S3 Bucket and Upload an Object
   - Navigate to S3.
