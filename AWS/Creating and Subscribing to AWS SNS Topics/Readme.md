@@ -69,11 +69,24 @@ Additionally, please delete your email in the SNS section before closing the act
   - Navigate back to the Lambda browser tab and paste the code within notification_processor.py file into the Function code area to overwriting the existing code. 
   - After pasting in code, click Deploy.
 
+![image](https://user-images.githubusercontent.com/44756128/114728427-b2cad780-9d04-11eb-8f45-b68c69e5546f.png)
+
 # Send Your SNS Topic to Multiple Endpoints
   - Navigate back to the SNS browser tab. Select Topics >> select mytopic >> Publish message and set:
     - Subject:An AWS Topic
     - Message body:Hello, this is our first message
-  - Select publish message.
+    - Select publish message.
+
+![image](https://user-images.githubusercontent.com/44756128/114728695-ee65a180-9d04-11eb-8deb-e6927db7e3d2.png)
+
+![image](https://user-images.githubusercontent.com/44756128/114728532-cb3af200-9d04-11eb-8dd1-7b7e584cbf49.png)
 
   - If successful, you'll receive a text message on your phone and in your email box.
+
+![image](https://user-images.githubusercontent.com/44756128/114728866-194ff580-9d05-11eb-9e6f-7bdfa8ae71a0.png)
+
   - Navigate back to the Lambda browser tab and click on Monitoring >> View logs in CloudWatch. If successful, you will see a message an entry within the Log streams section.
+
+![image](https://user-images.githubusercontent.com/44756128/114729064-43091c80-9d05-11eb-95f3-97b69a92b7f2.png)
+
+![image](https://user-images.githubusercontent.com/44756128/114729143-54eabf80-9d05-11eb-93ba-3c1a49aa4b7a.png)
