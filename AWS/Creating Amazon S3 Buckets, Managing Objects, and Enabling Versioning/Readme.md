@@ -50,7 +50,7 @@ Download the ccp-master.zip file that we'll upload later.
 ![image](https://user-images.githubusercontent.com/44756128/114719015-359b6480-9cfc-11eb-8e89-204a9ea53a51.png)
 
   - Set Manage public permissions to Grant public read access to this object(s).
-  - 
+
 ![image](https://user-images.githubusercontent.com/44756128/114719084-4ea41580-9cfc-11eb-80eb-e88d4c672c25.png)
 
   - Click Upload.
