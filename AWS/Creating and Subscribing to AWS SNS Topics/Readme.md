@@ -7,58 +7,73 @@ Log into the AWS Management Console.
 
 Use the notification_processor.py file in the directory.
 
-NOTE: When creating the lambda subscription, you will have to close the permission errors that appear. Afterward, you will be able to continue and finish the lab.
+Additionally, please delete your email in the SNS section before closing the activity.
 
-Additionally, please delete your email in the SNS section before closing the lab.
+# Create an SNS Topic
+  - Click on the Services drop-down menu, search and select SNS.
 
-Create an SNS Topic
-Click on the Services drop-down menu, search and select SNS.
-Type mytopic for * Topic name and select Next step >> Create topic.
-Select Subscription >> Create Subscription and set:
+![image](https://user-images.githubusercontent.com/44756128/114726862-5a470a80-9d03-11eb-94f5-1908856054d4.png)
 
-Topic ARN:Select only option from drop-down menu
-Protocol:Email
-Endpoint:your email address
+  - Type mytopic for * Topic name and select Next step >> Create topic.
 
-Click Create subscription. This may take some time to provision. Look in your Spam email box for a confirmation email and select Confirm subscription.
+![image](https://user-images.githubusercontent.com/44756128/114726950-6af78080-9d03-11eb-98c6-26dc5059674a.png)
 
-Create another subscription, this time for SMS. Click subscription >> Create topic and set:
+![image](https://user-images.githubusercontent.com/44756128/114727102-8bbfd600-9d03-11eb-89ef-437acde7b1fc.png)
 
-Topic ARN:Select only option from drop-down menu
-Protocol:SMS
-Endpoint:your phone number
+  - Select Subscription >> Create Subscription and set:
+    - Topic ARN:Select only option from drop-down menu
+    - Protocol:Email
+    - Endpoint:your email address
 
-Click Create subscription. Keep this tab open.
+![image](https://user-images.githubusercontent.com/44756128/114727300-b6aa2a00-9d03-11eb-9881-1dd65593b1cf.png)
 
-Create a Lambda Function
-In a new browser tab, click on the Services drop-down menu, search and select Lambda. Keep this browser tab open.
-Click Create function >> Author from scratch and set:
+   Click Create subscription. This may take some time to provision. Look in your Spam email box for a confirmation email and select Confirm subscription.
 
-Function name:SNSProcessor
-Runtime:Python 3.6
-Execution role:Use existing role
-Existing role:LambdaRoleLA
+![image](https://user-images.githubusercontent.com/44756128/114727390-c9bcfa00-9d03-11eb-9aa9-856066225627.png)
 
-Select Create Function.
+![image](https://user-images.githubusercontent.com/44756128/114727459-d5102580-9d03-11eb-99e9-1ec0a53ddd9d.png)
 
-Navigate back to the SNS browser tab. Click subscription >> Create subscription and set:
+  - Create another subscription, this time for SMS. Click subscription >> Create topic and set:
+    - Topic ARN:Select only option from drop-down menu
+    - Protocol:SMS
+    - Endpoint:your phone number
 
-Topic ARN:Select only option from drop-down menu
-Protocol:AWS Lambda
-Endpoint:select only option from drop-down menu
+      Click Create subscription. Keep this tab open.
 
-Click Create subscription.
+![image](https://user-images.githubusercontent.com/44756128/114727653-025cd380-9d04-11eb-8bf3-03f1dfd0a09c.png)
 
-Navigate back to the Lambda browser tab and paste the code within GitHub's notification_processor.py file into the Function code area to overwriting the existing code. (Click on the Python file and click the Raw button to copy its contents.)
+# Create a Lambda Function
+  - In a new browser tab, click on the Services drop-down menu, search and select Lambda. Keep this browser tab open.
 
-After pasting in code, click Deploy.
+![image](https://user-images.githubusercontent.com/44756128/114727853-2f10eb00-9d04-11eb-9f4e-70403964794f.png)
 
-Send Your SNS Topic to Multiple Endpoints
-Navigate back to the SNS browser tab. Select Topics >> select mytopic >> Publish message and set:
+  - Click Create function >> Author from scratch and set:
+    - Function name:SNSProcessor
+    - Runtime:Python 3.6
+    - Execution role:Use existing role
+    - Existing role:LambdaRoleLA
 
-Subject:An AWS Topic
-Message body:Hello, this is our first message
-Select publish message.
+      Select Create Function.
 
-If successful, you'll receive a text message on your phone and in your email box.
-Navigate back to the Lambda browser tab and click on Monitoring >> View logs in CloudWatch. If successful, you will see a message an entry within the Log streams section.
+![image](https://user-images.githubusercontent.com/44756128/114727987-4c45b980-9d04-11eb-81ce-85d646eb76ca.png)
+
+  - Navigate back to the SNS browser tab. Click subscription >> Create subscription and set:
+    - Topic ARN:Select only option from drop-down menu
+    - Protocol:AWS Lambda
+    - Endpoint:select only option from drop-down menu
+
+      Click Create subscription.
+
+![image](https://user-images.githubusercontent.com/44756128/114728089-654e6a80-9d04-11eb-9582-258081dad67d.png)
+
+  - Navigate back to the Lambda browser tab and paste the code within notification_processor.py file into the Function code area to overwriting the existing code. 
+  - After pasting in code, click Deploy.
+
+# Send Your SNS Topic to Multiple Endpoints
+  - Navigate back to the SNS browser tab. Select Topics >> select mytopic >> Publish message and set:
+    - Subject:An AWS Topic
+    - Message body:Hello, this is our first message
+  - Select publish message.
+
+  - If successful, you'll receive a text message on your phone and in your email box.
+  - Navigate back to the Lambda browser tab and click on Monitoring >> View logs in CloudWatch. If successful, you will see a message an entry within the Log streams section.
