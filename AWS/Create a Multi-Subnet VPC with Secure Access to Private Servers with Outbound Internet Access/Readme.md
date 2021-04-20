@@ -275,9 +275,12 @@ Let's now get into the Outbound Rules tab, click Edit inbound rules, and add a c
 
 We're done with the rules, so let's click Save.
 
+![image](https://user-images.githubusercontent.com/44756128/115429234-d7bdbf80-a1c8-11eb-9379-ba123d2173a2.png)
 
 ### Subnet Associations
-Let's get into the Subnet associations tab, and click Edit subnet associations. Once we're in there, select our two private subnets and click Edit.
+Let's get into the Subnet associations tab, and click Edit subnet associations. Once we're in there, select our two private subnets and click Save.
+
+![image](https://user-images.githubusercontent.com/44756128/115429364-f6bc5180-a1c8-11eb-9539-176fac0271f7.png)
 
 ### Create a New Security Group
 In the Security Groups dashboard, click on Create security group, and give it these values:
@@ -286,6 +289,8 @@ In the Security Groups dashboard, click on Create security group, and give it th
   - VPC: Pick ours
 
 Now, we can click Create and Close.
+
+![image](https://user-images.githubusercontent.com/44756128/115429547-1fdce200-a1c9-11eb-938d-91ad6af25478.png)
 
 ### Create Some Rules
 On the main Security Groups page, make sure our new one is selected. Let's head down to the lower part of the page again.
@@ -299,6 +304,8 @@ In the Inbound Rules tab, on the lower part of the screen, click Edit Rules, and
   - Description: SSH from Bastion Host
 
 We just need the one rule, so we can click Save.
+
+![image](https://user-images.githubusercontent.com/44756128/115429707-49960900-a1c9-11eb-9378-4ec0287a40dc.png)
 
 ### Outbound
 Click Edit rules in the Outbound rules tab, and add a couple with these values:
@@ -319,19 +326,29 @@ Click Edit rules in the Outbound rules tab, and add a couple with these values:
 
 We can click Save here.
 
+![image](https://user-images.githubusercontent.com/44756128/115429880-7518f380-a1c9-11eb-996a-08a626a030bc.png)
+
 # Create an EC2 Instance in the Private Subnet
 Back in our main Services menu (up at the top of the screen), find EC2 and open it up in a new browser tab. In the EC2 dashboard, click Launch Instance. Select the Amazon Linux 2 AMI from the list of AMIs, leave t2.micro selected, and click the Next: Configure Instance Details button.
 
 On this page, we're not setting much. Select our ATD_Private3 from the Subnet list, and make sure Auto-assign Public IP is set to Disable. We don't want this instance getting a public IP.
 
+![image](https://user-images.githubusercontent.com/44756128/115430082-ab567300-a1c9-11eb-9eba-ac118a8cd141.png)
+
 Let's click Next: Add Storage, and breeze right through by clicking Next: Add Tags. In this screen, click Add tag, and we'll set a Key of Name with a Value of PrivateAppServer. Click Next: Configure Security Group.
+
+![image](https://user-images.githubusercontent.com/44756128/115430210-c75a1480-a1c9-11eb-9e12-8b4304ae6217.png)
 
 Here, we'll choose Select an existing security group from the Assign a security group list, select our ATD_Private34_SecGrp, and then click Review and Launch. Then, click Launch on the screen after that.
 
+![image](https://user-images.githubusercontent.com/44756128/115430268-d640c700-a1c9-11eb-9b2d-ec37a6fc6b5f.png)
+
 We'll get another popup about key pairs, and this time we'll set the dropdown to Choose an existing key pair, and select atd_keypair from the Select a key pair dropdown. Check the I acknowledge... box, click Launch Instances, and then click View Instances. Just like last time we did this, we'll be taken to the screen that shows us all of our instances and what state they're in.
 
+![image](https://user-images.githubusercontent.com/44756128/115430334-e3f64c80-a1c9-11eb-8a5b-647c65066d34.png)
+
 # Log in to the Instance
-Windows Users: Please use the instructions below when prompted during the video lessons:
+Windows Users: Please use the instructions below when prompted:
 
 For instructions on connecting to a Amazon Linux instance using Putty on a Windows computer, please use the following video lesson:
 
@@ -367,6 +384,8 @@ ssh ec2-user@192.168.0.x
 
 Oops. It's not working. What'd we miss?
 
+![image](https://user-images.githubusercontent.com/44756128/115430916-64b54880-a1ca-11eb-955d-636874a220dd.png)
+
 ## Troubleshoot the Login Failure
 Over in the VPC Dashboard, let's double-check our Network ACLs. Select our ATD_Private3. The Inbound Rules tab looks fine, but we forgot to add a rule for ephemeral port traffic in the Outbound Rules tab. Let's do that now. Click Add Rule and set the form like this:
   - Rule #: 130
@@ -375,6 +394,8 @@ Over in the VPC Dashboard, let's double-check our Network ACLs. Select our ATD_P
   - Port Range: 1024-65535
   - Destination: 0.0.0.0/0
   - Allow / Deny: ALLOW
+
+![image](https://user-images.githubusercontent.com/44756128/115431113-90383300-a1ca-11eb-9c2f-328358648f3b.png)
 
 Let's click Save and try logging in again. In the terminal, we should still see it hung (at the ssh command). Hit the Ctrl + c combination to kill it. Run ssh ec2-user@192.168.0.x again, and we should get the
 ```sh
@@ -389,6 +410,8 @@ We need to set up a NAT gateway so the app servers can communicate through it an
 
 # NACL Setup
 In our main left-hand menu, click Network ACLs, and then Create network ACL. We're going to name this one ATD_Public2-NACL and select our VPC from the list below that. Click Create, and we'll get dumped back to the main NACL page. Select our newest one, then click Edit inbound rules in the Inbound Rules tab. We've got to allow HTTPS traffic, ephemeral ports, and ping traffic. We've got to allow all that traffic out as well. Here's a list of settings:
+
+![image](https://user-images.githubusercontent.com/44756128/115431626-21a7a500-a1cb-11eb-9b04-d36847b195ce.png)
 
 ## Inbound Rules
 ### HTTPS
@@ -415,6 +438,8 @@ In our main left-hand menu, click Network ACLs, and then Create network ACL. We'
   - Source: 0.0.0.0/0
   - Allow / Deny: ALLOW
 
+![image](https://user-images.githubusercontent.com/44756128/115431769-47cd4500-a1cb-11eb-989d-9ba0ac8575ff.png)
+
 ## Outbound Rules
 ### HTTPS
   - Rule #: 110
@@ -440,18 +465,26 @@ In our main left-hand menu, click Network ACLs, and then Create network ACL. We'
   - Destination: 0.0.0.0/0
   - Allow / Deny: ALLOW
 
+![image](https://user-images.githubusercontent.com/44756128/115431878-692e3100-a1cb-11eb-97a0-92e055f4fe9d.png)
+
 # Subnet Associations
 In the Subnet Associations tab, we'll click Edit subnet associations, and select our ATD_Public2 subnet. Click Edit.
+
+![image](https://user-images.githubusercontent.com/44756128/115431928-777c4d00-a1cb-11eb-81b0-37ef40af3c87.png)
 
 Our NACL is done!
 
 # The NAT Gateway Itself
-Get into the NAT Gateways screen (it's in the menu on the left) and click Create NAT Gateway. On the next screen, pick our ATD_Public2 from the Subnet dropdown, and since we don't have an Elastic IP yet, click Create New EIP. That form field will populate with eipalloc-xxxx... where xxx and everything afterward is something random that AWS generates. We can click Create NAT Gateway.
+Get into the NAT Gateways screen (it's in the menu on the left) and click Create NAT Gateway. On the next screen, pick our ATD_Public2 from the Subnet dropdown, and since we don't have an Elastic IP yet, click Allocate EIP. That form field will populate with eipalloc-xxxx... where xxx and everything afterward is something random that AWS generates. We can click Create NAT Gateway.
+
+![image](https://user-images.githubusercontent.com/44756128/115432240-c3c78d00-a1cb-11eb-8bc5-cf03e0da3bc7.png)
 
 Normally in windows like this next one, we just click Close. This time, however, there's a warning. We can't use this NAT Gateway until we edit our route tables. Lucky for us, AWS stuck a handy Edit route tables button in here for us. Let's click it.
 
 # Fix the Route Table
 Back in the Route Tables screen, let's select our ATD_PrivateRT, get into the Routes tab, and click Edit routes. We need to add a route. In the form, we're going to set Destination to 0.0.0.0/0, and then in the Target, we'll get into the dropdown and click NAT Gateway. Ours should be in there, so select it. Once we click Save routes, then Close, we should be ready to test.
+
+![image](https://user-images.githubusercontent.com/44756128/115432532-17d27180-a1cc-11eb-9698-6af20f79eec3.png)
 
 # Testing
 To test this setting, we're going to ping from an app server through the NAT gateway out to the internet. Sound fun? Let's do it.
